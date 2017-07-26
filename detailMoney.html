@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="./css/mui.picker.min.css" />
+		<link href="./css/mui.poppicker.css" rel="stylesheet" />
+		<style type="text/css">
+			.departDate,
+			.arrvivalDate,
+			.showTransport {
+				width: 65%!important;
+				border: none;
+				font-size: 18px;
+				text-align: left!important;
+			}
+			
+			#allDetailMoney .mui-icon-arrowright:before {
+				font-size: 20px;
+				color: deepskyblue
+			}
+			
+			[id^='detailMoney'] .mui-input-row {
+				border-bottom: 1px solid gainsboro;
+			}
+			
+			#addDetailMoney {
+				border: none;
+			}
+			
+			#allDetailMoney .closeDetailMoney {
+				float: right
+			}
+			/*修改折叠框图标位置*/
+			
+			#allDetailMoney .mui-navigate-right:after,
+			#allDetailMoney .mui-push-right:after {
+				right: 55px;
+			}
+			#allDetailMoney .mui-btn-block {
+				margin-bottom: 0px;
+			}
+			#allDetailMoney  .mui-btn{
+				line-height: 100%;
+				padding: 15px 0;
+			}
+			#allDetailMoney .mui-collapse-content {
+				margin-bottom: -19px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="allDetailMoney">
+			<!--需要的mui组件  折叠框，日期，弹出框，选择框-->
+			<div id="detailMoney01" class="mui-table-view-cell mui-collapse ">
+				<a class="mui-navigate-right" href="#">明细列表<span class="closeDetailMoney mui-icon mui-icon-closeempty mui-right"></span></a>
+				<div class="mui-collapse-content">
+					<div class="mui-input-row">
+						<label>出发日期</label>
+						<button data-options='{" type ":"date ","beginYear ":2014,"endYear ":2016}' class="departDate btnDate btn mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right">请选择</button>
+					</div>
+					<div class="mui-input-row">
+						<label>到达日期</label>
+						<button data-options='{" type ":"date ","beginYear ":2014,"endYear ":2016}' class="arrvivalDate btnDate btn mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right">请选择</button>
+					</div>
+					<div class="mui-input-row">
+						<label>出发地</label>
+						<input type="text" class="departArea mui-input-clear" placeholder="请填写">
+					</div>
+					<div class="mui-input-row">
+						<label>目的地</label>
+						<input type="text" class="arrvivalArea mui-input-clear" placeholder="请填写">
+					</div>
+
+					<div class="mui-input-row">
+						<label>交通工具</label>
+						<button class="showTransport mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button">请选择</button>
+
+					</div>
+					<div class="mui-input-row">
+						<label>机票</label>
+						<input type="text" class="mui-input-clear" placeholder="0.0">
+					</div>
+					<div class="mui-input-row">
+						<label>交通费</label>
+						<input type="text" class="mui-input-clear" placeholder="0.0">
+					</div>
+					<div class="mui-input-row">
+						<label>住宿费</label>
+						<input type="text" class="mui-input-clear" placeholder="0.0">
+					</div>
+					<div class="mui-input-row">
+						<label>招待费</label>
+						<input type="text" class="mui-input-clear" placeholder="0.0">
+					</div>
+					<div class="mui-input-row">
+						<label>其他费用</label>
+						<input type="text" class="mui-input-clear" placeholder="0.0">
+					</div>
+					<div class="mui-input-row">
+						<label>补贴</label>
+						<input type="text" class="mui-input-clear" placeholder="0.0">
+					</div>
+					
+				</div>
+			</div>
+
+			<button id="addDetailMoney" type="button" class="mui-btn mui-btn-block mui-icon mui-icon-plus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加明细</button>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="./js/mui.picker.min.js"></script>
+		<script src="./js/mui.poppicker.js"></script>
+		<script type="text/javascript">
+			(function($) {
+				$.init();
+				var allDetailMoney = mui('#allDetailMoney');
+				//				日期选择控制
+				var btnDates = $(".btnDate");
+				allDetailMoney.on("tap", '.btnDate',function() {
+						var optionsJson = this.getAttribute("data-options") || "{}";
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute("id");
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						var result = this;
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+
+							result.innerText = rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				
+
+				//交通工具选择器
+				var transportPickerData = new $.PopPicker();
+				transportPickerData.setData([{
+					value: "feiji",
+					text: "飞机"
+				}, {
+					value: "huoche",
+					text: "火车"
+				}, {
+					value: "qiche",
+					text: "汽车"
+				}, {
+					value: "zijia",
+					text: "自驾"
+				}, {
+					value: "qita",
+					text: "其他"
+				}]);
+				var showTransport = mui(".showTransport");
+				allDetailMoney.on("tap",".showTransport", function(event) {
+					var result = this;
+					transportPickerData.show(function(items) {
+						result.innerText = items[0].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+
+				//				新增明细按钮	
+				addDetailMoney.addEventListener('tap', function() {
+					var addDetailMoney = $('#addDetailMoney')[0];
+					var newDateForNewDetail = new Date().getTime();
+					var newDetailMoney = document.createElement("div");
+						newDetailMoney.setAttribute('id','detailMoney' + newDateForNewDetail);
+						newDetailMoney.setAttribute('class','mui-table-view-cell mui-collapse ');
+						newDetailMoney.innerHTML =	'<a class="mui-navigate-right" href="#">明细列表<span class="closeDetailMoney mui-icon mui-icon-closeempty mui-right+"></span></a>' +
+						'		<div class="mui-collapse-content">' +
+						'			<div class="mui-input-row">' +
+						'				<label>出发日期</label>' +
+						'				<button  data-options='+'\'{"type":"date","beginYear":2014,"endYear":2016}\' '+ 'class="departDate btnDate btn mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right">请选择</button>' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>到达日期</label>' +
+						'				<button  data-options='+'\'{"type":"date","beginYear":2014,"endYear":2016}\' '+ 'class="arrvivalDate btnDate btn mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right">请选择</button>' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>出发地</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="请填写">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>目的地</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="请填写">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>交通工具</label>' +
+						'				<button id="showTransport" class="showTransport mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button">请选择</button>' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>机票</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="0.0">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>交通费</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="0.0">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>住宿费</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="0.0">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>招待费</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="0.0">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>其他费用</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="0.0">' +
+						'			</div>' +
+						'			<div class="mui-input-row">' +
+						'				<label>补贴</label>' +
+						'				<input type="text" class="mui-input-clear" placeholder="0.0">' +
+						'			</div>' +
+						'		</div>'; 
+					allDetailMoney[0].insertBefore(newDetailMoney, this)
+				})
+
+				//删除本明细按钮
+				var closeDetailMoneys = $('.closeDetailMoney');
+					allDetailMoney.on('tap', '.closeDetailMoney',function(e) {
+						allDetailMoney[0].removeChild(this.parentNode.parentNode)
+					})
+				
+
+			})(mui);
+		</script>
+	</body>
+
+</html>
