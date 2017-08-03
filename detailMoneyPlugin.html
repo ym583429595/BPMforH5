@@ -175,6 +175,7 @@
 						//				日期选择控制
 						var btnDates = $(".btnDate");
 						this.parentDom.on("tap", '.btnDate', function() {
+							document.activeElement.blur(); 
 							var optionsJson = this.getAttribute("data-options") || "{}";
 							var options = JSON.parse(optionsJson);
 							var id = this.getAttribute("id");
@@ -222,6 +223,7 @@
 						}]);
 						var showTransport = mui(".showTransport");
 						this.parentDom.on("tap", ".showTransport", function(event) {
+							document.activeElement.blur(); 
 							var result = this;
 							transportPickerData.show(function(items) {
 								result.innerText = items[0].text;

@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "liucheng.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -188,6 +188,48 @@
 					"xxhdpi": ""
 				}
 			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"detailMoneyPlugin.html": {
+				"resources": [
+					"js/mui.picker.min.js",
+					"js/mui.min.js",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.poppicker.css",
+					"css/mui.picker.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"liucheng.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"detailMoney.html",
+				"data.html",
+				"js/mui.js",
+				"css/mui.css"
+			]
 		}
 	}
 }

@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+		body {
+				font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Helvetica", "Tahoma", "Simsun";
+				font-size: 12px;
+			}
+			li{
+				list-style: none;
+			}
+			
+			.timeline {
+				width: 95%;
+				margin-top: 20px;
+				/*display: table;*/
+				border-spacing: 0;
+				table-layout: fixed;
+				position: relative;
+				border-collapse: collapse;
+			}
+			
+			.timeline:before {
+				content: "";
+				width: 1px;
+				margin-left: -6px;
+				position: absolute;
+				top: 0;
+				bottom: 30px;
+				background-color: #ddd;
+				z-index: 0;
+				margin-top: 55px;
+				left: 24px;
+				margin-bottom: 25px;
+			}
+		}
+		.timeline-item {
+			padding-left: 26px;
+			display: block;
+		}
+		.timeline-caption {
+			display: block;
+			width: 100%;
+			vertical-align: top
+		}
+		.timeline-caption .panel {
+			position: relative;
+			margin-left: 5px;
+			text-align: left;
+			margin-bottom: 20px;
+			background-color: #fff;
+			border: 1px solid transparent;
+		}
+		.timeline-caption .bg-star-flow {
+			border-radius: 5px;
+			border-color: #1ab667;
+		}
+		.panel-body {
+			padding: 10px;
+		}
+		.timeline-caption .border-star-flow {
+			border-right-color: #1ab667;
+		}
+		.arrow {
+			border-width: 8px;
+			z-index: 10;
+		}
+		.arrow.left {
+			top: 50%;
+			left: -8px;
+			margin-top: -8px;
+			border-left-width: 0;
+		}
+		.arrow,
+		.arrow:after {
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+		}
+		.arrow.left:after {
+			content: " ";
+			left: 1px;
+			border-left-width: 0;
+			border-right-color: #fff;
+			bottom: -7px;
+		}
+		.arrow,
+		.arrow:after {
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+		}
+		.arrow:after {
+			border-width: 7px;
+			content: "";
+		}
+		.timeline .timeline-icon {
+			position: absolute;
+			left: -41px;
+			top: 50%;
+			margin-top: -12px;
+		}
+		.timeline .time-icon {
+			padding-top: 6px;
+			width: 25px;
+			height: 25px;
+			display: inline-block !important;
+			z-index: 10;
+			border-radius: 20px;
+			text-align: center;
+		}
+		.bg-success {
+			background-color: #1ab667;
+			color: #a9f3ce;
+		}
+		.timeline .mui-icon{
+			padding-top: 0;
+			font-weight: 700;
+		}
+		</style>
+	</head>
+
+	<body>
+		<ul class="timeline">
+			<li class='timeline-item'>
+				<div class="timeline-caption">
+					<div class="panel panel-default bg-star-flow" data-bind="css:{'bg-star-flow':Status()==1,'bg-doing-flow':Status()==2,'bg-ugdone-flow':Status()==0}">
+						<div class="panel-body">
+							<span class="arrow left border-star-flow" data-bind="css:{'border-star-flow':Status()==1,'border-doing-flow':Status()==2,'border-ugdone-flow':Status()==0}"></span>
+							<span class="timeline-icon">
+			                <i class="fa-check time-icon bg-success mui-icon mui-icon-checkmarkempty"></i>
+			             </span>
+							<div class="panel-body pl-body-approve">
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		<li class='timeline-item'>
+				<div class="timeline-caption">
+					<div class="panel panel-default bg-star-flow" data-bind="css:{'bg-star-flow':Status()==1,'bg-doing-flow':Status()==2,'bg-ugdone-flow':Status()==0}">
+						<div class="panel-body">
+							<span class="arrow left border-star-flow" data-bind="css:{'border-star-flow':Status()==1,'border-doing-flow':Status()==2,'border-ugdone-flow':Status()==0}"></span>
+							<span class="timeline-icon">
+			                <i class="fa-check time-icon bg-success mui-icon mui-icon-location"></i>
+			             </span>
+							<div class="panel-body pl-body-approve">
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		
+		<li class='timeline-item'>
+				<div class="timeline-caption">
+					<div class="panel panel-default bg-star-flow" data-bind="css:{'bg-star-flow':Status()==1,'bg-doing-flow':Status()==2,'bg-ugdone-flow':Status()==0}">
+						<div class="panel-body">
+							<span class="arrow left border-star-flow" data-bind="css:{'border-star-flow':Status()==1,'border-doing-flow':Status()==2,'border-ugdone-flow':Status()==0}"></span>
+							<span class="timeline-icon">
+			                <i class=" fa-check time-icon bg-success mui-icon mui-icon-closeempty"></i>
+			             </span>
+							<div class="panel-body pl-body-approve">
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+								<p class="m-n  ActiveNodeCN">
+									<label>审批步骤：</label>
+									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		
+		</ul>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			//			{active:true,
+			//			zhiwei:'',name:'',
+			//			time:'',status:'',
+			//			result:''}
+		</script>
+	</body>
+
+</html>
