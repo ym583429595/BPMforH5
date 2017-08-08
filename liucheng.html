@@ -11,11 +11,12 @@
 				font-family: "Microsoft Yahei", "微软雅黑", "宋体", "Helvetica", "Tahoma", "Simsun";
 				font-size: 12px;
 			}
-			li{
+			
+			li {
 				list-style: none;
 			}
 			
-			.timeline {
+			#timeline {
 				width: 95%;
 				margin-top: 20px;
 				/*display: table;*/
@@ -25,7 +26,7 @@
 				border-collapse: collapse;
 			}
 			
-			.timeline:before {
+			#timeline:before {
 				content: "";
 				width: 1px;
 				margin-left: -6px;
@@ -39,16 +40,16 @@
 				margin-bottom: 25px;
 			}
 		}
-		.timeline-item {
+		#timeline .timeline-item {
 			padding-left: 26px;
 			display: block;
 		}
-		.timeline-caption {
+		#timeline .timeline-caption {
 			display: block;
 			width: 100%;
 			vertical-align: top
 		}
-		.timeline-caption .panel {
+		#timeline .panel {
 			position: relative;
 			margin-left: 5px;
 			text-align: left;
@@ -56,28 +57,47 @@
 			background-color: #fff;
 			border: 1px solid transparent;
 		}
-		.timeline-caption .bg-star-flow {
+		#timeline .panel-default {
+			border-color: #ddd;
+			border-radius: 5px;
+		}
+		#timeline .bg-star-flow {
 			border-radius: 5px;
 			border-color: #1ab667;
 		}
-		.panel-body {
+		#timeline .bg-doing-flow {
+			border-color: #fad733;
+			border-radius: 5px;
+		}
+		#timeline .bg-danger-flow {
+			border-color: #f05050;
+			border-radius: 5px;
+		}
+		#timeline .panel-body {
 			padding: 10px;
 		}
-		.timeline-caption .border-star-flow {
-			border-right-color: #1ab667;
-		}
-		.arrow {
+		#timeline .arrow {
 			border-width: 8px;
 			z-index: 10;
 		}
-		.arrow.left {
+		#timeline .panel-body .arrow {
 			top: 50%;
 			left: -8px;
 			margin-top: -8px;
 			border-left-width: 0;
+			border-right-color: #ddd;
 		}
-		.arrow,
-		.arrow:after {
+		#timeline .panel-body .border-star-flow {
+			border-right-color: #1ab667;
+		}
+		#timeline .panel-body .border-doing-flow {
+			border-right-color: #fad733;
+		}
+		#timeline .panel-body .border-danger-flow {
+			border-right-color: #f05050;
+		}
+		#timeline .arrow,
+		#timeline .arrow:after {
 			position: absolute;
 			display: block;
 			width: 0;
@@ -85,15 +105,15 @@
 			border-color: transparent;
 			border-style: solid;
 		}
-		.arrow.left:after {
+		#timeline .arrow.left:after {
 			content: " ";
 			left: 1px;
 			border-left-width: 0;
 			border-right-color: #fff;
 			bottom: -7px;
 		}
-		.arrow,
-		.arrow:after {
+		#timeline .arrow,
+		#timeline .arrow:after {
 			position: absolute;
 			display: block;
 			width: 0;
@@ -101,17 +121,17 @@
 			border-color: transparent;
 			border-style: solid;
 		}
-		.arrow:after {
+		#timeline .arrow:after {
 			border-width: 7px;
 			content: "";
 		}
-		.timeline .timeline-icon {
+		#timeline .timeline-icon {
 			position: absolute;
 			left: -41px;
 			top: 50%;
 			margin-top: -12px;
 		}
-		.timeline .time-icon {
+		#timeline .time-icon {
 			padding-top: 6px;
 			width: 25px;
 			height: 25px;
@@ -119,108 +139,179 @@
 			z-index: 10;
 			border-radius: 20px;
 			text-align: center;
+			background-color: #ddd;
 		}
-		.bg-success {
+		#timeline .bg-success {
 			background-color: #1ab667;
 			color: #a9f3ce;
 		}
-		.timeline .mui-icon{
+		#timeline .bg-warning {
+			background-color: #fad733;
+			color: #fffefa;
+		}
+		#timeline .bg-danger {
+			background-color: #f05050;
+			color: #ffffff;
+		}
+		#timeline .mui-icon {
 			padding-top: 0;
 			font-weight: 700;
+		}
+		#timeline .float-right {
+			float: right
+		}
+		#timeline .resultColor {
+			color: #1ab667
+		}
+		#timeline .other {
+			color: #808080;
+			font-size: 12px;
 		}
 		</style>
 	</head>
 
 	<body>
-		<ul class="timeline">
-			<li class='timeline-item'>
-				<div class="timeline-caption">
-					<div class="panel panel-default bg-star-flow" data-bind="css:{'bg-star-flow':Status()==1,'bg-doing-flow':Status()==2,'bg-ugdone-flow':Status()==0}">
-						<div class="panel-body">
-							<span class="arrow left border-star-flow" data-bind="css:{'border-star-flow':Status()==1,'border-doing-flow':Status()==2,'border-ugdone-flow':Status()==0}"></span>
-							<span class="timeline-icon">
-			                <i class="fa-check time-icon bg-success mui-icon mui-icon-checkmarkempty"></i>
-			             </span>
-							<div class="panel-body pl-body-approve">
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		<li class='timeline-item'>
-				<div class="timeline-caption">
-					<div class="panel panel-default bg-star-flow" data-bind="css:{'bg-star-flow':Status()==1,'bg-doing-flow':Status()==2,'bg-ugdone-flow':Status()==0}">
-						<div class="panel-body">
-							<span class="arrow left border-star-flow" data-bind="css:{'border-star-flow':Status()==1,'border-doing-flow':Status()==2,'border-ugdone-flow':Status()==0}"></span>
-							<span class="timeline-icon">
-			                <i class="fa-check time-icon bg-success mui-icon mui-icon-location"></i>
-			             </span>
-							<div class="panel-body pl-body-approve">
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		
-		<li class='timeline-item'>
-				<div class="timeline-caption">
-					<div class="panel panel-default bg-star-flow" data-bind="css:{'bg-star-flow':Status()==1,'bg-doing-flow':Status()==2,'bg-ugdone-flow':Status()==0}">
-						<div class="panel-body">
-							<span class="arrow left border-star-flow" data-bind="css:{'border-star-flow':Status()==1,'border-doing-flow':Status()==2,'border-ugdone-flow':Status()==0}"></span>
-							<span class="timeline-icon">
-			                <i class=" fa-check time-icon bg-success mui-icon mui-icon-closeempty"></i>
-			             </span>
-							<div class="panel-body pl-body-approve">
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-								<p class="m-n  ActiveNodeCN">
-									<label>审批步骤：</label>
-									<span data-bind="text: &quot;中文&quot;==&quot;English&quot;?NameEN:NameCN,attr:{title:&quot;中文&quot;==&quot;English&quot;?NameEN:NameCN }" title="开始">开始</span>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		
+		<ul id="timeline">
+
 		</ul>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			//			{active:true,
-			//			zhiwei:'',name:'',
-			//			time:'',status:'',
-			//			result:''}
+			
+			var Timeline = {
+				parentDom: document.getElementsByTagName('body')[0],
+				//依次为原始（空代表默认色）,已完成，正在进行，出错或撤回节点对应的边框颜色，三角颜色，字体图标，
+				status: [
+					[],
+					["bg-star-flow", "border-star-flow", "mui-icon-checkmarkempty bg-success"],
+					["bg-doing-flow", "border-doing-flow", "mui-icon-location bg-warning"],
+					["bg-danger-flow", "border-danger-flow", "mui-icon-closeempty bg-danger"],
+				],
+				templateText: function(data) {
+					var statusIndex = data.Status,
+						nameCN = data.NameCN,
+						approvers = data.Approvers,
+						createTime = data.CreateTime,
+						action = data.Action,
+						comment = data.Comment;
+
+					return('<div class="panel panel-default ' + this.status[statusIndex][0] + '">' +
+						'<div class="">' +
+						'<span class="arrow left ' + this.status[statusIndex][1] + '"></span>' +
+						'<span class="timeline-icon">' +
+						'<i class="fa-check time-icon mui-icon ' + this.status[statusIndex][2] + '"></i>' +
+						'</span>' +
+						'<div class="panel-body pl-body-approve">' +
+						'<p class="m-n  ActiveNodeCN">' +
+						'<label>' + nameCN + '</label>' +
+						'<span class="float-right" title="">' + approvers + '</span>' +
+						'</p>' +
+						'<p class="m-n  ActiveNodeCN">' +
+						'<label>' + createTime + '</label>' +
+						'<span class="float-right resultColor" title="">' + action + '</span>' +
+						'</p>' +
+						'<p class="m-n  ActiveNodeCN">' +
+						'<span class="other" title="">' + comment + '</span>' +
+						'</p>' +
+						'</div>' +
+						'</div>' +
+						'</div>')
+				},
+				init: function(dom, data) {
+					//如果为传入dom，能默认body为dom
+					this.parentDom = dom||this.parentDom;
+					this.createTimeLine(this.parentDom, data);
+				},
+				createTimeLine: function(dom, data) {
+					var htmlText = '';
+					var node = document.createElement("LI");
+
+					for(var i = 0; i < data.length; i++) {
+						htmlText += this.templateText(data[i])
+					}
+					//console.log(htmlText);
+					node.setAttribute('class', 'timeline-item')
+					node.innerHTML = htmlText;
+					dom.appendChild(node)
+				}
+			}
+			
+			var data =  [
+        {
+          "NameCN": "开始",
+          "NameEN": "Start",
+          "Action": "发起",
+          "Approvers": "杨帆(Adron Yang)",
+          "Status": 1,
+          "Comment": "提交",
+          "CreateTime": "8/3/2017 5:30:44 PM"
+        },
+        {
+          "NameCN": "HRBP",
+          "NameEN": "HRBP",
+          "Action": "撤回",
+          "Approvers": "杨帆(Adron Yang)",
+          "Status": 3,
+          "Comment": "杨帆(Adron Yang)撤回了流程,备注:Test Complete.",
+          "CreateTime": "8/3/2017 5:31:26 PM"
+        },
+        {
+          "NameCN": "重新提交",
+          "NameEN": "Start",
+          "Action": "",
+          "Approvers": "杨帆(Adron Yang)",
+          "Status": 2,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "HRBP",
+          "NameEN": "HRBP",
+          "Action": "",
+          "Approvers": "来坚松(Jiansong Lai)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "直接主管",
+          "NameEN": "DirectSupervisor",
+          "Action": "",
+          "Approvers": "",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "虚拟节点",
+          "NameEN": "VirtualNode",
+          "Action": "",
+          "Approvers": "",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "部门负责人",
+          "NameEN": "DepartmentHeader",
+          "Action": "",
+          "Approvers": "林旭(Xu Lin)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "结束",
+          "NameEN": "End",
+          "Action": "",
+          "Approvers": "",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        }
+      ]
+			//传入data为auditNode的data
+			Timeline.init(document.getElementById('timeline'), data)
 		</script>
 	</body>
 
