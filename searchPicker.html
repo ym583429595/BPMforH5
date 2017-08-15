@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="./css/mui.picker.min.css" />
+		<style type="text/css">
+			.mui-hidden{
+				    display: inline-block!important;
+			}
+		</style>
+	</head>
+	<button id="searchPicker">picker</button>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script src="./js/mui.picker.min.js"></script>
+		<script type="text/javascript">
+			var searchPicker = (function() {
+				var searchPicker = function(el, data) {
+					this.el = document.querySelector(el);
+					this.data = data;
+					if(!typeof data == 'object') {
+						console.log('传入data非对象');
+						return;
+					}
+					this.init();
+				}
+				searchPicker.prototype.init = function() {
+					this.build();
+					//this.search();
+					this.events();
+				}
+				searchPicker.prototype.build = function() {
+					//new后就已建立html结构，此结构父元素为body
+					var picker = new mui.PopPicker();
+					//新增自己的search input框
+					var muiPicker = document.querySelectorAll('.mui-picker')[0],
+						muiPickerInner = document.querySelectorAll('.mui-picker-inner')[0],
+						searchDiv = document.createElement('div');
+					searchDiv.setAttribute('class', 'mui-input-row mui-search');
+					var searchDivText = '<input type="search" class="mui-input-clear" placeholder="">';
+					searchDiv.innerHTML = searchDivText;
+					muiPicker.insertBefore(searchDiv, muiPickerInner);
+					mui(".mui-search input").input();
+					//设定picker的数据
+					picker.setData(this.data);
+					this.picker=picker;
+				}
+				searchPicker.prototype.search = function() {
+					var self=this,
+						muiPicker = document.querySelectorAll('.mui-picker input')[0];
+					muiPicker.addEventListener('input',function(){
+						
+					})
+				}
+				searchPicker.prototype.events = function() {
+					var self=this;
+					this.el.addEventListener('click',function(){
+						document.querySelectorAll('.mui-picker input')[0].focus();
+						self.showPicker();
+					})
+					
+					var muiPicker = document.querySelectorAll('.mui-picker input')[0];
+					muiPicker.addEventListener('keydown',function(e){
+						//按回车或者搜索触发跳转指定index
+						if(13 == e.keyCode){
+							var indexPicker=-1,
+								value=this.value;
+							if(!value) return;
+							self.data.some(function(item,index){
+								if(item.text.indexOf(value)>-1)
+									return indexPicker=index;
+							})
+							self.picker.pickers[0].setSelectedIndex(indexPicker, 1000)
+						}
+					})
+				}
+				searchPicker.prototype.showPicker = function() {
+					var self=this;
+					self.picker.show(function(selectItems) {
+						self.el.innerHTML = selectItems[0].text
+					})
+				}
+				var init = function(el, data) {
+					new searchPicker(el, data)
+				}
+				return {
+					init: init
+				}
+			})()
+
+			var data = {
+				"retData": [{
+					"name": "2124",
+					"dataList": [{
+						"DicId": 2168,
+						"DicCode": "CN TAK TIAOXIU",
+						"DicDesc": "调休"
+					}, {
+						"DicId": 2130,
+						"DicCode": "CN TAK PATER",
+						"DicDesc": "陪产假"
+					}, {
+						"DicId": 7279,
+						"DicCode": "CN TAK BURU",
+						"DicDesc": "哺乳假"
+					}, {
+						"DicId": 17644,
+						"DicCode": "CN TAK TANQI",
+						"DicDesc": "探亲假"
+					}]
+				}]
+			}
+			//目前知道有2中data，1中为上，组织架构树的没有name
+			var newData = {},
+				datalist = [];
+			if(data.retData[0].name) {
+				//第一种数据
+//				data.retData[0].dataList.forEach(function(item, index) {
+//					newData.value = item.DicId;
+//					newData.text = item.DicDesc;
+//					datalist.push(newData);
+//					newData = {};
+//				})
+				getDataList(data.retData[0].dataList)
+			} else {
+				//组织架构树的数据类型
+				getDataList(data.retData.costcenterList)
+			}
+			function getDataList(data){
+				data.forEach(function(item, index) {
+					newData.value = item.DicId;
+					newData.text = item.DicDesc;
+					datalist.push(newData);
+					newData = {};
+				})
+			}
+			searchPicker.init('#searchPicker', datalist);
+		</script>
+	</body>
+
+</html>

@@ -23,6 +23,16 @@
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "searchPicker.html": {
+    "resources": [
+      "js/mui.picker.min.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/mui.picker.min.css"
     ]
   }
 }
