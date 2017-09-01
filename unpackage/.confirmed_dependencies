@@ -33,6 +33,20 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "css/mui.picker.min.css"
-    ]
+    ],
+    "refer": []
+  },
+  "PostPayment.html": {
+    "resources": [
+      "js/utility.js",
+      "js/vue.js",
+      "js/mui.min.js",
+      "css/common.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/style.css",
+      "js/mui.picker.all.js"
+    ],
+    "refer": []
   }
 }

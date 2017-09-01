@@ -1,0 +1,838 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>付款申请-发起</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/common.css" rel="stylesheet" />
+		<link href="css/mui.picker.all.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/utility.js"></script>
+		<script src="js/mui.picker.all.js"></script>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav header-bg">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">付款申请</h1>
+			<a class="mui-icon mui-icon-home mui-pull-right" href="#"></a>
+		</header>
+		<div class="mui-content" v- id="main" style="padding-bottom: 60px;">
+			<!--基本信息-->
+			<div id="BasicInfo" class="cui-bgc-0">
+				<div class="cui-blank-10"></div>
+				<h3>基本信息</h3>
+				<ul>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>公司名称<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button" id="searchPicker0" v-on:tap="CompanyOnTap">
+                		    	{{BasicInfo.CompanyName}}
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>成本中心<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button" id="searchPicker1" v-on:tap="CostCenterOnTap">
+                		    	{{BasicInfo.CostCenterName}}
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>经办人<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-plusempty mui-right" type="button">
+                		    	娄月
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>付款类型<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button" v-on:tap="PaymentTypeOnTap">
+                		    	{{BasicInfo.PaymentTypeName}}
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>付款内容<span>*</span></label>
+							</div>
+						</div>
+
+						<div class="form-info">
+							<input id='' type="text" placeholder="请填写">
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>收款单位名称<span>*</span></label>
+							</div>
+						</div>
+
+						<div class="form-info">
+							<input id='' type="text" placeholder="请填写">
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>付款方所属银行<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button" v-on:tap="PayeeBankOnTap">
+                		    	{{BasicInfo.PayeeBankName}}
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>收款银行账号<span>*</span></label>
+							</div>
+						</div>
+
+						<div class="form-info">
+							<input id='' type="number" placeholder="6214855717957571">
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>收款地址<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" style="width:48%;text-align: center;" type="button" v-on:tap="PayeeBankProvinceOnTap">
+                		    	{{BasicInfo.PayeeBankProvinceName}}  省
+                		    </button>
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" style="width:48%;text-align: center;" type="button" v-on:tap="PayeeBankCityOnTap">
+                		    	{{BasicInfo.PayeeBankCityName}}  市
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>支行名称<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button" v-on:tap="PayeeBranchBankOnTap">
+                		    	{{BasicInfo.PayeeBranchBankName}}
+                		    </button>
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>付款金额<span>*</span></label>
+							</div>
+						</div>
+
+						<div class="form-info">
+							<input id='' type="text" placeholder="请填写">
+						</div>
+
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>是否有预算<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info cui-margin-t-10">
+							<input name="reimbursement" type="radio" value="" /> 是 &nbsp;&nbsp;&nbsp;
+							<input name="reimbursement" type="radio" value="" /> 否
+						</div>
+					</li>
+					<li>
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>是否有发票<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info cui-margin-t-10">
+							<input name="reimbursement" type="radio" value="true" v-model="BasicInfo.HasBuget"/> 是 &nbsp;&nbsp;&nbsp;
+							<input name="reimbursement" type="radio" value="" v-model="BasicInfo.HasBuget"/> 否
+						</div>
+					</li>
+					<li v-if="BasicInfo.HasBuget">
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>发票号码<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<input id='' type="text" placeholder="请填写">
+						</div>
+					</li>
+					<li v-show="BasicInfo.HasBuget">
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>发票金额<span>*</span></label>
+							</div>
+						</div>
+						<div class="form-info">
+							<input id='' type="text" placeholder="请填写">
+						</div>
+					</li>
+				</ul>
+
+			</div>
+
+			<!--附件信息-->
+			<div id="DetailInfo" class="cui-bgc-0">
+				<div class="cui-blank-10"></div>
+				<h3>附件信息</h3>
+				<ul id="attachment">
+					<li >
+						<div class="text-outer">
+							<div class="text-mid">
+								<label>附件类型</label>
+							</div>
+						</div>
+						<div class="form-info">
+							<button class="mui-btn mui-btn-block mui-icon mui-icon-arrowright mui-right" type="button">
+                		    	付款申请单
+                		    </button>
+						</div>
+
+					</li>
+					<div class="cui-blank-10"></div>
+					<button id="headImage" type='button' style="width:60px;height:60px;font-size:50px;line-height: 46px;color: grey;">+</button>
+					<div class="cui-blank-10"></div>
+					<!--<img src="" id='mainImage' style='width:100px;height:100px' />-->
+				</ul>
+			</div>
+			
+			<nav class="mui-bar mui-bar-tab " id="navBar">
+            <button type="button" class="mui-btn mui-icon mui-icon-paperplane CommonProcessButton cui-border-r cui-c-green" onclick="Submit()">
+                <span>提交</span>
+            </button>
+            <button type="button" class="mui-btn mui-icon mui-icon-checkmarkempty CommonProcessButton cui-c-common" onclick="Save()">
+                <span>保存</span>
+            </button>
+
+        </nav>
+		</div>
+		<script type="text/javascript">
+			//todo 点击添加图片事件
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					init();
+					/*点击头像触发*/
+					var imageIndex=1;
+					mui('#attachment').on('tap','#headImage',  function() {
+						var mainImage = document.createElement('img'),
+							attachment=document.getElementById("attachment");
+						mainImage.setAttribute("class","mainImage"+imageIndex);
+						
+						if(mui.os.plus) {
+							var a = [{
+								title: "拍照"
+							}, {
+								title: "从手机相册选择"
+							}];
+							plus.nativeUI.actionSheet({
+								title: "修改用户头像",
+								cancel: "取消",
+								buttons: a
+							}, function(b) { /*actionSheet 按钮点击事件*/
+								switch(b.index) {
+									case 0:
+										break;
+									case 1:
+										getImage(mainImage); /*拍照*/
+										break;
+									case 2:
+										galleryImg(mainImage); /*打开相册*/
+										break;
+									default:
+										break;
+								}
+							})
+						}
+						attachment.insertBefore(mainImage,this);
+						imageIndex++;
+					}, false);
+
+					//拍照 
+					function getImage(mainImage) {
+						var c = plus.camera.getCamera();
+						c.captureImage(function(e) {
+							console.log('123');
+							plus.io.resolveLocalFileSystemURL(e, function(entry) {
+								var s = entry.toLocalURL() + "?version=" + new Date().getTime();
+								uploadHead(s,mainImage); /*上传图片*/
+							}, function(e) {
+								console.log("读取拍照文件错误：" + e.message);
+							});
+						}, function(s) {
+							console.log(c);
+							console.log("error" + s);
+						}, {
+							filename: "_doc/head.png"
+						})
+					}
+
+					//上传头像图片 
+					function uploadHead(imgPath,mainImage) {
+						console.log("imgPath = " + imgPath);
+						mainImage.src = imgPath;
+						mainImage.style.width = "60px";
+						mainImage.style.height = "60px";
+
+						var image = new Image();
+						image.src = imgPath;
+						image.onload = function() {
+							var imgData = getBase64Image(image);
+							/*在这里调用上传接口*/
+							//              mui.ajax("图片上传接口", { 
+							//                  data: { 
+							//                       
+							//                  }, 
+							//                  dataType: 'json', 
+							//                  type: 'post', 
+							//                  timeout: 10000, 
+							//                  success: function(data) { 
+							//                      console.log('上传成功'); 
+							//                  }, 
+							//                  error: function(xhr, type, errorThrown) { 
+							//                      mui.toast('网络异常，请稍后再试！'); 
+							//                  } 
+							//              }); 
+						}
+					}
+					//将图片压缩转成base64 
+					function getBase64Image(img) {
+						var canvas = document.createElement("canvas");
+						var width = img.width;
+						var height = img.height;
+						// calculate the width and height, constraining the proportions 
+						if(width > height) {
+							if(width > 100) {
+								height = Math.round(height *= 100 / width);
+								width = 100;
+							}
+						} else {
+							if(height > 100) {
+								width = Math.round(width *= 100 / height);
+								height = 100;
+							}
+						}
+						canvas.width = width; /*设置新的图片的宽度*/
+						canvas.height = height; /*设置新的图片的长度*/
+						var ctx = canvas.getContext("2d");
+						ctx.drawImage(img, 0, 0, width, height); /*绘图*/
+						var dataURL = canvas.toDataURL("image/png", 0.8);
+						return dataURL.replace("data:image/png;base64,", "");
+					}
+
+					//本地相册选择 
+					function galleryImg(mainImage) {
+						plus.gallery.pick(function(a) {
+							plus.io.resolveLocalFileSystemURL(a, function(entry) {
+								plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
+									root.getFile("head.png", {}, function(file) {
+										//文件已存在 
+										file.remove(function() {
+											console.log("file remove success");
+											entry.copyTo(root, 'head.png', function(e) {
+													var e = e.fullPath + "?version=" + new Date().getTime();
+													uploadHead(e,mainImage); /*上传图片*/
+													//变更大图预览的src 
+													//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现 
+												},
+												function(e) {
+													console.log('copy image fail:' + e.message);
+												});
+										}, function() {
+											console.log("delete image fail:" + e.message);
+										});
+									}, function() {
+										//文件不存在 
+										entry.copyTo(root, 'head.png', function(e) {
+												var path = e.fullPath + "?version=" + new Date().getTime();
+												uploadHead(path,mainImage); /*上传图片*/
+											},
+											function(e) {
+												console.log('copy image fail:' + e.message);
+											});
+									});
+								}, function(e) {
+									console.log("get _www folder fail");
+								})
+							}, function(e) {
+								console.log("读取拍照文件错误：" + e.message);
+							});
+						}, function(a) {}, {
+							filter: "image"
+						})
+					};
+
+				});
+			})(mui, document);
+
+			function init() {
+				var initData = {
+					BasicInfo: {
+						//isBx: true,
+						//公司代码
+						Companys: [],
+						Company: '',
+						CompanyName: '请选择',
+						//成本中心
+						CostCenter: '',
+						CostCenters: [],
+						CostCenterName: "请选择",
+						//暂存付款类型，显示付款类型字段
+						PaymentType: [],
+						PaymentTypeEn: '',
+						PaymentTypeName: "请选择",
+						PaymentTypeValue: 0,
+						PaymentContent:"付款内容",
+						PayeeId:"收款单位名称",
+						//省 市 银行名
+						PayeeBank: '',
+						PayeeBanks: [],
+						PayeeBankName: '请选择',
+						PayeeBankAccount: '收款账号',
+						PayeeBankProvince: '',
+						PayeeBankProvinces: [],
+						PayeeBankProvinceName: '请选择',
+						PayeeBankCity: '',
+						PayeeBankCitys: [],
+						PayeeBankCityName: '请选择',
+						//付款金额
+						PaymentAmount: '',
+						AuditPaymentAmount: '',
+
+						PayeeBranchBank: '',
+						PayeeBranchBanks: [],
+						PayeeBranchBankName: '请先选择收款银行，省，市',
+						PayeeId: '',
+						IsInvoice: false,
+						HasBuget: '',
+						InvoiceNumber:'发票号码',
+						InvoiceAmount:'发票金额'
+					},
+					detailData: {
+						
+						fujianleixing: []
+					},
+					companyFlag: ''
+				};
+				window.searchPicker = (function() {
+					var searchPicker = function(el, data) {
+						this.el = document.querySelector(el);
+						this.num = 0
+						this.data = data;
+						if(!typeof data == 'object') {
+							console.log('传入data非对象');
+							return;
+						}
+						this.init();
+					}
+					searchPicker.prototype.init = function() {
+						var buildReturn = this.build();
+						//this.search();
+						this.events();
+					}
+					searchPicker.prototype.build = function() {
+						//new后就已建立html结构，此结构父元素为body
+						var picker = new mui.PopPicker();
+						//新增自己的search input框
+						var muiPicker = document.querySelectorAll('.mui-picker')[this.num],
+							muiPickerInner = document.querySelectorAll('.mui-picker-inner')[this.num],
+							searchDiv = document.createElement('div');
+
+						searchDiv.setAttribute('class', 'mui-input-row mui-search');
+						var searchDivText = '<input type="search" class="mui-input-clear" placeholder="">';
+						searchDiv.innerHTML = searchDivText;
+						muiPicker.insertBefore(searchDiv, muiPickerInner);
+						mui(".mui-search input").input();
+						//设定picker的数据
+						picker.setData(this.data);
+						this.picker = picker;
+					}
+					searchPicker.prototype.search = function() {
+						var self = this,
+							muiPicker = document.querySelectorAll('.mui-picker input')[0];
+						muiPicker.addEventListener('input', function() {
+
+						})
+					}
+					searchPicker.prototype.events = function() {
+						var self = this;
+						this.el.addEventListener('click', function() {
+							document.querySelectorAll('.mui-picker input')[self.num].focus();
+							self.showPicker();
+						})
+
+						var muiPicker = document.querySelectorAll('.mui-picker input')[this.num];
+						muiPicker.addEventListener('keydown', function(e) {
+							//按回车或者搜索触发跳转指定index
+							if(13 == e.keyCode) {
+								var indexPicker = -1,
+									value = this.value;
+								if(!value) return;
+								self.data.some(function(item, index) {
+									if(item.text.indexOf(value) > -1)
+										return indexPicker = index || false;
+								})
+								self.picker.pickers[0].setSelectedIndex(indexPicker, 1000)
+							}
+						})
+					}
+					searchPicker.prototype.showPicker = function() {
+						var self = this;
+						self.picker.show(function(selectItems) {
+							self.el.innerHTML = selectItems[0].text;
+							self.el.setAttribute('data-Selected', selectItems[0].value);
+							//判断是否公司名称组件
+							if(self.el.id == "searchPicker0") {
+								Data.companyFlag = selectItems[0].value;
+							}
+							self.picker.dispose();
+						})
+					}
+					var init = function(el, data) {
+						new searchPicker(el, data)
+					}
+					return {
+						init: init
+					}
+				})()
+
+				//Init User Info
+				//获取人员信息
+
+//				Request('GetLoginUserId', 'POST', {
+//					"userId": "yue.lou",
+//					"password": "Lou626387",
+//					"deviceId": "1",
+//					"deviceType": "H5",
+//					"net": "WIFI",
+//					"sign": "1",
+//					"tg": "oa"
+//				}, function(data) {
+//					mui.extend(initData.BasicInfo, data.retData);
+					window.Data=new Vue({
+						el: "#main",
+						data: initData,
+						watch: {
+							//监听company的值，以便成本中心值的确定
+							companyFlag: function(val, oldVal) {
+								console.log('new: %s, old: %s', val, oldVal)
+								if(val && val !== oldVal) {
+									//获得成本中心数组
+									Request('GetCompanyCBPList', 'POST', {
+										"userId": "yue.lou",
+										"password": "Lou626387",
+										"deviceId": "1",
+										"deviceType": "H5",
+										"net": "WIFI",
+										"sign": "1",
+										"Language": "CN",
+										"companyCode": val
+									}, function(data) {
+										var CostCenters = data.retData.costcenterList;
+										Data.BasicInfo.CostCenters = [];
+										mui.each(CostCenters, function(index, item) {
+											Data.BasicInfo.CostCenters.push({
+												value: item.DicCode,
+												text: item.DicDesc
+											})
+										});
+
+									}, function() {});
+								}
+							}
+						},
+						methods: {
+							CompanyOnTap: function(event) {
+								document.activeElement.blur(); 
+								window.searchPicker.init('#searchPicker0', Data.BasicInfo.Companys);
+							},
+							CostCenterOnTap: function(event) {
+								document.activeElement.blur(); 
+								if(Data.companyFlag) {
+									window.searchPicker.init('#searchPicker1', Data.BasicInfo.CostCenters);
+								} else {
+									alert("未选择公司名");
+									return false;
+								}
+							},
+							PaymentTypeOnTap: function(event) {
+								document.activeElement.blur(); 
+								var me = this;
+								var PaymentTypePicker = new mui.PopPicker();
+
+								PaymentTypePicker.setData(Data.BasicInfo.PaymentType);
+								PaymentTypePicker.show(function(rs) {
+									me.BasicInfo.PaymentTypeName = rs[0].text;
+									me.BasicInfo.PaymentTypeValue = rs[0].value;
+									PaymentTypePicker.dispose();
+								});
+							},
+							PayeeBankOnTap: function(event) {
+								document.activeElement.blur(); 
+								var me = this;
+								var PayeeBankPicker = new mui.PopPicker();
+
+								PayeeBankPicker.setData(Data.BasicInfo.PayeeBanks);
+								PayeeBankPicker.show(function(rs) {
+									me.BasicInfo.PayeeBankName = rs[0].text;
+									me.BasicInfo.PayeeBankValue = rs[0].value;
+									PayeeBankPicker.dispose();
+								});
+							},
+							PayeeBankProvinceOnTap: function(event) {
+								var me = this;
+								var PayeeBankProvincePicker = new mui.PopPicker();
+
+								PayeeBankProvincePicker.setData(Data.BasicInfo.PayeeBankProvinces);
+								PayeeBankProvincePicker.show(function(rs) {
+									me.BasicInfo.PayeeBankProvinceName = rs[0].text;
+									me.BasicInfo.PayeeBankProvinceValue = rs[0].id;
+									PayeeBankProvincePicker.dispose();
+								});
+							},
+							PayeeBankCityOnTap: function(event) {
+								if(Data.BasicInfo.PayeeBankProvinceValue) {
+									Request('GetCityList', 'POST', {
+										"userId": "yue.lou",
+										"password": "Lou626387",
+										"deviceId": "1",
+										"deviceType": "H5",
+										"net": "WIFI",
+										"sign": "1",
+										"Language": "CN",
+										"provinceId":Data.BasicInfo.PayeeBankProvinceValue
+									}, function(data) {
+										var PayeeBankCitys = data.retData;
+										Data.BasicInfo.PayeeBankCitys=[];
+										mui.each(PayeeBankCitys, function(index, item) {
+											Data.BasicInfo.PayeeBankCitys.push({
+												value: item.DicCode,
+												text: item.DicDesc
+											})
+										});
+										
+										var me = this;
+										var PayeeBankCityPicker = new mui.PopPicker();
+		
+										PayeeBankCityPicker.setData(Data.BasicInfo.PayeeBankCitys);
+										PayeeBankCityPicker.show(function(rs) {
+											window.Data.BasicInfo.PayeeBankCityName = rs[0].text;
+											window.Data.BasicInfo.PayeeBankCityValue = rs[0].value;
+											PayeeBankCityPicker.dispose();
+										});
+										
+									}, function() {});
+								}else{
+									alert("请选择省份")
+								}
+							},
+							PayeeBranchBankOnTap: function(event) {
+								if(Data.BasicInfo.PayeeBankValue && Data.BasicInfo.PayeeBankProvinceName && Data.BasicInfo.PayeeBankCityName) {
+									Request('GetPCBBranchBankList', 'POST', {
+										"userId": "yue.lou",
+										"password": "Lou626387",
+										"deviceId": "1",
+										"deviceType": "H5",
+										"net": "WIFI",
+										"sign": "1",
+										"Language": "CN",
+										"payeeBankId":Data.BasicInfo.PayeeBankValue,
+										"provienceName":Data.BasicInfo.PayeeBankProvinceName,
+										"cityName":Data.BasicInfo.PayeeBankCityName,
+									}, function(data) {
+										var PayeeBranchBanks = data.retData;
+										Data.BasicInfo.PayeeBranchBanks=[];
+										mui.each(PayeeBranchBanks, function(index, item) {
+											Data.BasicInfo.PayeeBranchBanks.push({
+												value: item.DicCode,
+												text: item.DicDesc
+											})
+										});
+										
+										var me = this;
+										var PayeeBranchBankPicker = new mui.PopPicker();
+		
+										PayeeBranchBankPicker.setData(Data.BasicInfo.PayeeBranchBanks);
+										PayeeBranchBankPicker.show(function(rs) {
+											window.Data.BasicInfo.PayeeBranchBankName = rs[0].text;
+											window.Data.BasicInfo.PayeeBranchBankValue = rs[0].value;
+											PayeeBranchBankPicker.dispose();
+										});
+										
+									}, function() {});
+								}else{
+									alert("请选择省份")
+								}
+							}
+							
+							
+						}
+					});
+					//获得公司名称数组，刚进入app已获取
+					Request('GetCompanyList', 'POST', {
+						"userId": "yue.lou",
+						"password": "Lou626387",
+						"deviceId": "1",
+						"deviceType": "H5",
+						"net": "WIFI",
+						"sign": "1",
+						"Language": "CN"
+					}, function(data) {
+						var Companys = data.retData;
+						mui.each(Companys, function(index, item) {
+							Data.BasicInfo.Companys.push({
+								value: item.DicCode,
+								text: item.DicDesc
+							})
+						});
+					}, function() {});
+					//获得银行名称数组，刚进入app已获取
+					Request('GetPayeeBankList', 'POST', {
+						"userId": "yue.lou",
+						"password": "Lou626387",
+						"deviceId": "1",
+						"deviceType": "H5",
+						"net": "WIFI",
+						"sign": "1",
+						"Language": "CN"
+					}, function(data) {
+						var PayeeBanks = data.retData;
+						mui.each(PayeeBanks, function(index, item) {
+							Data.BasicInfo.PayeeBanks.push({
+								value: item.DicId,
+								text: item.DicDesc
+							})
+						});
+					}, function() {});
+					//获得省名称数组，刚进入app已获取
+					Request('GetProvienceList', 'POST', {
+						"userId": "yue.lou",
+						"password": "Lou626387",
+						"deviceId": "1",
+						"deviceType": "H5",
+						"net": "WIFI",
+						"sign": "1",
+						"Language": "CN"
+					}, function(data) {
+						var PayeeBankProvinces = data.retData;
+						mui.each(PayeeBankProvinces, function(index, item) {
+							Data.BasicInfo.PayeeBankProvinces.push({
+								id:item.DicId,
+								value: item.DicCode,
+								text: item.DicDesc
+							})
+						});
+					}, function() {});
+					//获取3219下拉框选项,预付款-应付款-投标保证金退还-履约保证金退还-社保公积金、水电费类等
+					Request('GetDictionaryByCode', 'POST', {
+						"userId": "yue.lou",
+						"password": "Lou626387",
+						"deviceId": "1",
+						"deviceType": "H5",
+						"net": "WIFI",
+						"sign": "1",
+						"code": 3219,
+						"Language": "CN"
+					}, function(data) {
+						var PaymentType = data.retData[0].dataList;
+						mui.each(PaymentType, function(index, item) {
+							Data.BasicInfo.PaymentType.push({
+								value: item.DicId,
+								text: item.DicDesc
+							})
+						});
+					}, function() {});
+
+					//获取3234下拉框选项,付款申请单
+					Request('GetDictionaryByCode', 'POST', {
+						"userId": "yue.lou",
+						"password": "Lou626387",
+						"deviceId": "1",
+						"deviceType": "H5",
+						"net": "WIFI",
+						"sign": "1",
+						"code": 3234,
+						"Language": "CN"
+					}, function(data) {
+						var fujianleixing = data.retData[0].dataList;
+						mui.each(fujianleixing, function(index, item) {
+							Data.detailData.fujianleixing.push({
+								value: item.DicId,
+								text: item.DicDesc
+							})
+						})
+					}, function() {});
+
+//				}, function() {
+//
+//				});
+
+				//Request('GetDictionaryByCode', 'POST', {
+				//    "userId": "yue.lou",
+				//    "password": "Lou626387",
+				//    "deviceId": "1",
+				//    "deviceType": "ISO",
+				//    "net": "WIFI",
+				//    "sign": "1",
+				//    "code": 3172,
+				//    "Language": "CN"
+				//}, function (data) {
+				//    var pickerData = [];
+				//    mui.each(data.retData[0].dataList, function (index, item) {
+				//        pickerData.push({
+				//            value: item.DicId,
+				//            text: item.DicDesc
+				//        })
+				//    })
+				//    window.Data.BasicInfo.TransportPickerData = pickerData;
+				//}, function () { });
+
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,453 @@
+/*底部导航图标样式*/
+
+@font-face {font-family: "iconfont";
+        src:url('../fonts/iconfont.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    }
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-qingjia:before { content: "\e6d7"; }
+
+.icon-ToDoList:before { content: "\e646"; }
+
+.icon-qingjiajiaban:before { content: "\e654"; }
+
+.icon-fukuanjihua:before { content: "\e63b"; }
+
+.icon-xiaoshoubaobiao:before { content: "\e60d"; }
+
+.icon-InitiateProcess:before { content: "\e617"; }
+
+.icon-jiabandiaoxiujieyu:before { content: "\e6cb"; }
+
+.icon-chalv-hangcheng:before { content: "\e665"; }
+
+.icon-chalvbaoxiaodan:before { content: "\e63c"; }
+
+.icon-fukuanjilu:before { content: "\e60f"; }
+
+.icon-GetRequestList:before { content: "\e611"; }
+
+.icon-jihuozhongzhuan:before { content: "\e89b"; }
+
+.icon-yijianfankui:before { content: "\e8a1"; }
+
+.icon-payment-request:before { content: "\e650"; }
+
+.icon-fukuan2:before { content: "\e609"; }
+
+.icon-feiyongjilu:before { content: "\e61c"; }
+
+.icon-chalvfeibaoxiao:before { content: "\e6a9"; }
+
+/*列表*/
+.mui-col-xs-10 {
+    width: 60%;
+}
+.mui-col-xs-2 {
+    width: 40%;
+}
+input[type=search]{
+	margin-bottom: 0;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+    color:#447AB4 ;
+}
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+    background-color: #6EA9C9;
+}
+.mui-search {
+    line-height: 34px;}
+/*流程发起、审批*/
+.mui-card {
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 2px;
+    background-color: #fff;
+    background-clip: padding-box;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+#BasicInfo {
+	
+}
+#DetailInfo,#TotalDetail{
+	margin-top: 10px;
+}
+#TotalDetail-att{
+	
+}
+#BasicInfo h3,#DetailInfo h3,#TotalDetail h3,#CommonInfo h3,#TotalDetail-att h3 {
+	width: 20%;
+	background-color: #6EA9C9;
+	border-radius: 0 10px 10px 0;
+	padding: 5px 10px;
+	/*display: inline-block;*/
+	color: #fff;
+	font-size: 12px;
+	float: left;
+}
+.mui-card ul li a span.title{
+	width: 20%;
+	background-color: #6EA9C9;
+	border-radius: 0 10px 10px 0;
+	/*display: inline-block;*/
+	color: #fff;
+	font-size: 12px;
+	float: left;
+	text-indent: 10px;
+}
+.mui-table-view-cell.mui-active {
+    background-color: #fff;
+}
+.mui-content>.mui-card:first-child {
+    margin-top: 0;
+}
+#BasicInfo ul,#DetailInfo ul,#CommonInfo ul{
+	padding: 0 10px;
+}
+#BasicInfo ul li,#DetailInfo ul li{
+	height: 40px;
+    line-height: 40px;
+	padding: 0 10px;
+	border-bottom:1px solid #f0f0f0;
+	font-size: 12px;
+	clear: both;
+}
+#CommonInfo ul li{
+	height: 25px;
+	line-height:25px;
+	padding: 0 10px;
+	font-size: 12px;
+	clear: both;
+}
+#CommonInfo ul li .text-outer{
+display:table; 
+ overflow:hidden; 
+ height: 25px;
+ float: left;
+ width: 30%;
+}
+#CommonInfo ul li .text-outer-r{
+display:table; 
+ overflow:hidden; 
+ height: 25px;
+ float: left;
+ width: 70%;
+ padding-left: 10px;
+}
+#CommonInfo ul li .text-mid{
+	display:table-cell; 
+	vertical-align:middle;
+	color: #999;
+}
+#BasicInfo ul li .text-outer,#DetailInfo ul li .text-outer {
+ display:table; 
+ overflow:hidden; 
+ height: 40px;
+ float: left;
+ width: 30%;
+ padding-left: 10px;
+}
+#BasicInfo ul li .text-outer-r,#DetailInfo ul li .text-outer-r {
+ display:table; 
+ overflow:hidden; 
+ height: 40px;
+ float: left;
+ width: 70%;
+ padding-left: 10px;
+}
+#BasicInfo ul li .text-mid,#DetailInfo ul li  .text-mid {
+	display:table-cell; 
+	vertical-align:middle;
+	color: #999;
+	 }
+	
+
+#BasicInfo label span,#DetailInfo label span{
+	color: red;
+	margin-left: 5px;
+}
+
+#BasicInfo .form-info,#DetailInfo .form-info,#CommonInfo .form-info{
+	width: 70%;
+	display: inline-block;
+	padding-left: 10px;
+}
+#BasicInfo input,#DetailInfo input,#CommonInfo input {
+
+	border: none;	
+	font-size: 12px;
+	padding: 0;
+	background: none;
+	color: #999;
+}
+#CommonInfo input{
+	height: 25px;
+}
+#BasicInfo .form-info button,#DetailInfo .form-info button{
+	border: none;
+	width: 100%;
+	padding: 0;
+	font-size: 12px;
+	line-height: 40px;
+	text-align: left;
+	background: none;
+}
+#CommonInfo .form-info button{
+	border: none;
+	width: 100%;
+	padding: 0;
+	font-size: 12px;
+	line-height: 25px;
+	text-align: left;
+	background: none;
+}
+#DetailInfo .AddDetails{
+
+	text-align: center;
+
+}
+#DetailInfo .AddDetails button{
+	border: none;
+    height: 50px;
+	font-size: 12px;
+	color:#6EA9C9 ;
+}
+#addDetail{
+	width: 100%;
+	border: none;
+    height: 50px;
+	font-size: 12px;
+	color:#6EA9C9 ;
+	text-align: center;
+}
+#TotalDetail h3,#TotalDetail-att h3{
+	width: 20%;
+	float: left;
+}
+
+#TotalDetail input,#TotalDetail-att input{
+	width: 70%;
+	height: 30px;
+	border: none;
+	text-align: right;
+	color: red;
+	font-size: 12px;
+	padding-top: 0;
+}
+.mui-table-view-cell.mui-collapse .mui-collapse-content{
+	margin: 0 -15px -11px;
+}
+
+/*placeholder颜色--未成功*/
+　input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+　　color: #333;
+　　}
+　　input:-moz-placeholder, textarea:-moz-placeholder {
+　　color:#333;
+　　}
+　　input::-moz-placeholder, textarea::-moz-placeholder {
+　　color:#333;
+　　}
+　　input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+　　color:#333;
+　　}
+/*流程图*/
+#timeline {
+				width: 85%;
+				margin: 20px 0 0 40px;
+				/*display: table;*/
+				border-spacing: 0;
+				table-layout: fixed;
+				position: relative;
+				border-collapse: collapse;
+				
+			}
+			
+			#timeline:before {
+				content: "";
+				width: 1px;
+				margin-left: -46px;
+				position: absolute;
+				top: 0;
+				bottom: 30px;
+				background-color: #ddd;
+				z-index: 0;
+				margin-top: 55px;
+				left: 24px;
+				margin-bottom: 25px;
+			}
+		}
+		#timeline .timeline-item {
+			padding-left: 26px;
+			display: block;
+		}
+		#timeline .timeline-caption {
+			display: block;
+			width: 100%;
+			vertical-align: top
+		}
+		#timeline .panel {
+			position: relative;
+			margin-left: 5px;
+			text-align: left;
+			margin-bottom: 20px;
+			background-color: #fff;
+			border: 1px solid transparent;
+		}
+		#timeline .panel-default {
+			border-color: #ddd;
+			border-radius: 5px;
+		}
+		#timeline .bg-star-flow {
+			border-radius: 5px;
+			border-color: #1ab667;
+		}
+		#timeline .bg-doing-flow {
+			border-color: #fad733;
+			border-radius: 5px;
+		}
+		#timeline .bg-danger-flow {
+			border-color: #f05050;
+			border-radius: 5px;
+		}
+		#timeline .panel-body {
+			padding: 10px;
+		}
+		#timeline .arrow {
+			border-width: 8px;
+			z-index: 10;
+		}
+		#timeline .panel-body .arrow {
+			top: 50%;
+			left: -8px;
+			margin-top: -8px;
+			border-left-width: 0;
+			border-right-color: #ddd;
+		}
+		#timeline .panel-body .border-star-flow {
+			border-right-color: #1ab667;
+		}
+		#timeline .panel-body .border-doing-flow {
+			border-right-color: #fad733;
+		}
+		#timeline .panel-body .border-danger-flow {
+			border-right-color: #f05050;
+		}
+		#timeline .arrow,
+		#timeline .arrow:after {
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+		}
+		#timeline .arrow.left:after {
+			content: " ";
+			left: 1px;
+			border-left-width: 0;
+			border-right-color: #fff;
+			bottom: -7px;
+		}
+		#timeline .arrow,
+		#timeline .arrow:after {
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+		}
+		#timeline .arrow:after {
+			border-width: 7px;
+			content: "";
+		}
+		#timeline .timeline-icon {
+			position: absolute;
+			left: -41px;
+			top: 50%;
+			margin-top: -12px;
+		}
+		#timeline .time-icon {
+			padding-top: 6px;
+			width: 25px;
+			height: 25px;
+			display: inline-block !important;
+			z-index: 10;
+			border-radius: 20px;
+			text-align: center;
+			background-color: #ddd;
+		}
+		#timeline .bg-success {
+			background-color: #1ab667;
+			color: #a9f3ce;
+		}
+		#timeline .bg-warning {
+			background-color: #fad733;
+			color: #fffefa;
+		}
+		#timeline .bg-danger {
+			background-color: #f05050;
+			color: #ffffff;
+		}
+		#timeline .mui-icon {
+			padding-top: 0;
+			font-weight: 700;
+		}
+		#timeline .float-right {
+			float: right
+		}
+		#timeline .resultColor {
+			color: #1ab667
+		}
+		#timeline .other {
+			color: #808080;
+			font-size: 12px;
+		}
+		#timeline .m-n{overflow: hidden;}
+		#timeline .m-n label{display: inline-block;width: 60%;font-size: 12px;}
+		#timeline .m-n span{display: inline-block;width: 35%;font-size: 12px;}
+/*表单*/
+/*单选框*/
+.SingleBox{vertical-align:middle;margin-top:-2px;}
+/*去除折叠面板阴影*/
+.mui-card{box-shadow: none;}
+/*明细删除*/
+.mui-icon-closeempty {
+    font-family: Muiicons;
+    font-size: inherit;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #bbb;
+    -webkit-font-smoothing: antialiased;
+}
+/*按钮*/
+.CommonProcessButton{
+	border: none;
+	background: none;
+	width: 50%;	
+}
+.mui-bar button{
+	border-radius: 0;
+}
+.mui-bar button span{
+	font-size: 14px;
+}
+.mui-bar .mui-btn{
+	top: 0;
+}
+.over-scroll{overflow: scroll;}

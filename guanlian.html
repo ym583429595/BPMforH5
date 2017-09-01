@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			#guanlian {
+				position: fixed;
+				left: 0px;
+				width: 100%;
+				height:265px;
+				z-index: 999;
+				background-color: #fff;
+				border-top: solid 1px #ccc;
+				box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.1);
+				-webkit-transition: .3s;
+				bottom: 0px;
+				-webkit-transform: translateY(300px);
+			}
+			
+			#guanlian.active {
+				-webkit-transform: translateY(0px);
+			}
+			#guanlianBack,#guanlianAdd{line-height: 44px;color:#8f8f94}
+			.mui-content>.mui-table-view:first-child {margin-top:0}
+			.mui-table-view {margin-top: 45px;}
+			.mui-checkbox label, .mui-radio label {
+				padding: 5px 15px;
+			}
+			.mui-bar{background-color: #fff;}
+			.mui-pull-bottom-wrapper{
+				text-align: center;    background-color: #fff;
+			}
+			.mui-checkbox input[type=checkbox], .mui-radio input[type=radio] {top:10px}
+			.colorBlue{color: #007aff;}
+			.mui-checkbox, .mui-radio {border-bottom: 1px solid silver;}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				bottom: 200px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1000;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button class="guanlian">guanlian</button>
+		<div id="guanlian">
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js"></script>
+		<script src="js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript">
+			var guanlian = document.getElementById('guanlian'),
+				mask = mui.createMask(mcb);
+			//创建关联界面
+			var text = '<header class="mui-bar mui-bar-nav">' +
+				'<a id="guanlianBack" class="mui-action-back  mui-pull-left">取消</a>' +
+				'<h1 id="title" class="mui-title colorBlue">关联公出申请</h1>' +
+				'<a id="guanlianAdd" class="mui-action-back  mui-pull-right">添加</a>' +
+				'</header>' +
+				'<div class="mui-content"><div class="mui-scroll-wrapper"> <div class="mui-scroll"> <ul class="mui-table-view mui-table-view-radio">';
+			for(var i = 0; i < 2; i++) {
+				text += '<li class="mui-input-row mui-radio mui-left"><label>'+
+				'<h6>编号 &nbsp; &nbsp;<span class="colorBlue">12312312_000_2131231</span></h6>'+
+				'<h6>公共预算  <span>11111</span><span class="mui-pull-right"> &nbsp; &nbsp;2015-01-02 12:09</span><span class="mui-pull-right">提交时间</span></h6>'+
+				'</label><input name="guanlianRadio" class="guanlianRadio" type="radio" value="公共预算'+i+'"></li>';
+			}
+			text += '</ul></div></div></div>';
+			guanlian.innerHTML = text;
+
+			function mcb() {
+				guanlian.removeAttribute('class');
+			}
+			mui('body').on('tap', '.guanlian', function() {
+				guanlian.setAttribute('class', 'active');
+				mask.show()
+			})
+			mui('body').on('tap', '#guanlianBack', function() {
+				mask.close();
+				mcb();
+			})
+			mui('body').on('tap', '#guanlianAdd', function() {
+				var rdsObj = document.getElementsByClassName('guanlianRadio'),
+			     	checkVal = null;
+			    for(i = 0; i < rdsObj.length; i++){
+			        if(rdsObj[i].checked){checkVal = rdsObj[i].value;}
+			    }
+			    document.getElementsByClassName('guanlian')[0].innerHTML=checkVal;
+			    mask.close();
+				mcb();
+			})
+			var mc = document.getElementsByClassName('mui-scroll')[0];
+			
+			mui(mc).pullToRefresh({
+				down: {
+					callback: function() {
+						var self = this;
+						setTimeout(function() {
+							var ul = self.element.querySelector('.mui-table-view');
+							ul.insertBefore(createFragment(ul, 0, 5, true), ul.firstChild);
+							self.endPullDownToRefresh();
+						}, 1000);
+					}
+				},
+				up: {
+					callback: function() {
+						var self = this;
+						setTimeout(function() {
+							var ul = self.element.querySelector('.mui-table-view');
+							ul.appendChild(createFragment(ul, 0, 5));
+							self.endPullUpToRefresh();
+						}, 1000);
+					}
+				}
+			});
+			var createFragment = function(ul, index, count, reverse) {
+				var length = ul.querySelectorAll('li').length;
+				var fragment = document.createDocumentFragment();
+				var li;
+				for(var i = 0; i < count; i++) {
+					li = document.createElement('li');
+					li.className = 'mui-input-row mui-radio mui-left';
+					li.innerHTML = '<label>'+
+				'<h6>编号 &nbsp; &nbsp;<span class="colorBlue">'+(length + (reverse ? (count - i) : (i + 1)))+'</span></h6>'+
+				'<h6>公共预算  <span>11111</span><span class="mui-pull-right"> &nbsp; &nbsp;2015-01-02 12:09</span><span class="mui-pull-right">提交时间</span></h6>'+
+				'</label><input name="guanlianRadio" class="guanlianRadio" type="radio" value="公共预算'+i+'">';
+					fragment.appendChild(li);
+				}
+				return fragment;
+			};
+		</script>
+	</body>
+
+</html>

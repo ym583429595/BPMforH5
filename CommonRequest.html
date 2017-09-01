@@ -1,0 +1,1066 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>通用审批</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/common.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav header-bg">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">通用审批</h1>
+			<a class="mui-icon mui-icon-home mui-pull-right" href="index.html"></a>
+		</header>-->
+		<div id="maincontent" class="mui-content">
+			<div class="mui-slider mui-fullscreen">
+				<!--选项卡标题区-->
+				<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1">摘要信息</a>
+					<a class="mui-control-item" href="#item2">详细信息</a>
+				</div>
+				<div class="mui-slider-progress-bar mui-col-xs-6"></div>
+
+				<div class="mui-slider-group">
+					<!--第一个选项卡内容区-->
+                    <div id="item1" class="mui-slider-item mui-control-content mui-active">
+                        <div id="scroll1" class="mui-scroll-wrapper">
+                            <div id="page0" class="mui-scroll">
+                                <ul class="mui-table-view">
+                                    <li class="mui-table-view-cell mui-media cui-border-b">
+                                        <img class="mui-media-object mui-pull-left" src="">
+                                        <div class="mui-media-body">
+                                            {{empData.NameCN}}（{{empData.NameEN}}）
+                                            <p class='cui-g-c9 cui-size-12'>{{empData.DeptNameCN}} {{empData.Eid}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <!--基本信息-->
+                                <div id="CommonInfo" class="cui-bgc-0">
+                                    <div class="cui-blank-10"></div>
+                                    <ul>
+                                        <li v-for="item in listAbstract">
+                                            <div class="text-outer">
+                                                <div class="text-mid">
+                                                    <label>
+                                                        {{item.FieldCN}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="text-outer-r">
+                                                <div class="text-mid">
+                                                    <label>{{item.FieldCode}}</label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="cui-blank-10"></div>
+                                </div>
+                                <ul id="timeline"></ul>
+                            </div>
+                        </div>
+                        <!--流程图-->
+                    </div>
+					<!--第二个选项卡内容区-->
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<!--基本信息-->
+                        <div class="mui-scroll-wrapper">
+                            <div id="page1" class="mui-scroll">
+                                <ul class="mui-table-view">
+                                    <li class="mui-table-view-cell mui-collapse mui-active">
+                                        <a class="mui-navigate-right" href="#">
+                                            <span class="title">基本信息</span>
+                                        </a>
+                                        <div class="mui-collapse-content">
+                                            <form class="mui-input-group">
+                                                <div id="CommonInfo" class="cui-bgc-0">
+                                                    <div class="mui-collapse-content">
+                                                        <ul>
+                                                            <li v-for="item in listValue">
+                                                                <div class="text-outer">
+                                                                    <div class="text-mid">
+                                                                        <label>{{item.FieldCN}}</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-outer-r">
+                                                                    <div class="text-mid">
+                                                                        <label>{{item.FieldCode}}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="cui-blank-10"></div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                            <div class="cui-line"></div>
+                            <div id="CommonInfo" class="cui-bgc-0">
+                                <div class="cui-blank-10"></div>
+                                <h3>附件信息</h3>
+                                <div class="cui-blank-10"></div>
+                                <ul>
+                                    <li>
+                                        <div class="text-outer">
+                                            <div class="text-mid">
+                                                <label>附件分组</label>
+                                            </div>
+                                        </div>
+                                        <div class="text-outer-r">
+                                            <div class="text-mid">
+                                                <label>流程类型</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="cui-border-none">
+                                        <div class="text-outer">
+                                            <div class="text-mid">
+                                                <label>创建时间</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-outer-r">
+                                            <div class="text-mid">
+                                                <label>20170806</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="cui-border-none">
+                                        <div class="text-outer">
+                                            <div class="text-mid">
+                                                <label>附件</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-outer-r">
+                                            <div class="text-mid">
+                                                <label><a href="">附件名称</a></label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="cui-blank-10"></div>
+                            </div>
+                        </div>
+						</div>
+
+					</div>
+				</div>
+
+        <script src="js/mui.min.js"></script>
+        <script src="js/vue.js"></script>
+        <script src="js/mui.pullToRefresh.js"></script>
+        <script src="js/mui.pullToRefresh.material.js"></script>
+        <script src="js/utility.js"></script>
+		<script>
+                mui.init();
+				//var data = [{
+				//		"NameCN": "开始",
+				//		"NameEN": "Start",
+				//		"Action": "发起",
+				//		"Approvers": "杨帆(Adron Yang)",
+				//		"Status": 1,
+				//		"Comment": "提交",
+				//		"CreateTime": "8/3/2017 5:30:44 PM"
+				//	},
+				//	{
+				//		"NameCN": "HRBP",
+				//		"NameEN": "HRBP",
+				//		"Action": "撤回",
+				//		"Approvers": "杨帆(Adron Yang)",
+				//		"Status": 3,
+				//		"Comment": "杨帆(Adron Yang)撤回了流程,备注:Test Complete.",
+				//		"CreateTime": "8/3/2017 5:31:26 PM"
+				//	},
+				//	{
+				//		"NameCN": "重新提交",
+				//		"NameEN": "Start",
+				//		"Action": "",
+				//		"Approvers": "杨帆(Adron Yang)",
+				//		"Status": 2,
+				//		"Comment": "",
+				//		"CreateTime": ""
+				//	},
+				//	{
+				//		"NameCN": "HRBP",
+				//		"NameEN": "HRBP",
+				//		"Action": "",
+				//		"Approvers": "来坚松(Jiansong Lai)",
+				//		"Status": 0,
+				//		"Comment": "",
+				//		"CreateTime": ""
+				//	},
+				//	{
+				//		"NameCN": "直接主管",
+				//		"NameEN": "DirectSupervisor",
+				//		"Action": "",
+				//		"Approvers": "",
+				//		"Status": 0,
+				//		"Comment": "",
+				//		"CreateTime": ""
+				//	},
+				//	{
+				//		"NameCN": "虚拟节点",
+				//		"NameEN": "VirtualNode",
+				//		"Action": "",
+				//		"Approvers": "",
+				//		"Status": 0,
+				//		"Comment": "",
+				//		"CreateTime": ""
+				//	},
+				//	{
+				//		"NameCN": "部门负责人",
+				//		"NameEN": "DepartmentHeader",
+				//		"Action": "",
+				//		"Approvers": "林旭(Xu Lin)",
+				//		"Status": 0,
+				//		"Comment": "",
+				//		"CreateTime": ""
+				//	},
+				//	{
+				//		"NameCN": "结束",
+				//		"NameEN": "End",
+				//		"Action": "",
+				//		"Approvers": "",
+				//		"Status": 0,
+				//		"Comment": "",
+				//		"CreateTime": ""
+				//	}
+				//]
+				//传入data为auditNode的data
+                //Timeline.init(document.getElementById('timeline'), data)
+        
+
+            (function ($) {
+                UserId = GetUserId();
+                UrlParam = GetRequest();
+                var deceleration = mui.os.ios ? 0.003 : 0.0009;
+                Info = new Vue({
+                    el: "#maincontent",
+                    data: {
+                        empData: {
+                            NameCN: "",
+                            NameEN: "",
+                            DeptNameCN: "",
+                            Eid:""
+                        },
+                        listAbstract: [],
+                        listValue: []
+                    }
+                });
+
+                Request("DisplayAppCurrencyRequest", "POST", {
+                    barCode: UrlParam.BarCode,
+                    deviceId: 1,
+                    deviceType: "H5",
+                    net: "WIFI",
+                    sign: "1",
+                    userId: UserId,
+                    workflowType: UrlParam.ProcessName
+                }, function (responeddata) {
+                	var responeddata={
+  "code": "100",
+  "msg": "OK",
+  "apiName": "DisplayAppCurrencyRequest",
+  "deviceId": "1",
+  "userId": "yue.lou",
+  "sign": "1",
+  "retData": {
+    "SubmitByBase64": "",
+    "mainData": "",
+    "detailData": "",
+    "listValue": [
+      {
+        "Id": 4506,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Summary",
+        "FieldCN": "流程内容",
+        "FieldType": "文本",
+        "FieldCode": "测试",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 1,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4507,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Name",
+        "FieldCN": "姓名",
+        "FieldType": "文本",
+        "FieldCode": "杨妙",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 2,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4508,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Eid",
+        "FieldCN": "员工编号",
+        "FieldType": "文本",
+        "FieldCode": "0080036",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 3,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4509,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Company",
+        "FieldCN": "公司",
+        "FieldType": "文本",
+        "FieldCode": "集团信息工程中心",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 4,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4510,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "DeptName",
+        "FieldCN": "部门",
+        "FieldType": "文本",
+        "FieldCode": "HCM与协同IT部HCM交付科",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 5,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4511,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Position",
+        "FieldCN": "岗位",
+        "FieldType": "文本",
+        "FieldCode": "IT产品开发一级工程师",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 6,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4512,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Grade",
+        "FieldCN": "岗级",
+        "FieldType": "文本",
+        "FieldCode": "5         ",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 7,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4513,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "IDnumber",
+        "FieldCN": "身份证号码",
+        "FieldType": "文本",
+        "FieldCode": "150302198807061030",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": false,
+        "Order": 8,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4514,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "TelNumber",
+        "FieldCN": "手机号",
+        "FieldType": "文本",
+        "FieldCode": "15157171800",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": false,
+        "Order": 9,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4515,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "maritalStatusName",
+        "FieldCN": "婚姻状况",
+        "FieldType": "文本",
+        "FieldCode": "未婚",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 10,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4516,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "AccountPropertiesName",
+        "FieldCN": "户口性质",
+        "FieldType": "文本",
+        "FieldCode": "非农",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 11,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4517,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "PayTypeName",
+        "FieldCN": "缴纳种类",
+        "FieldType": "文本",
+        "FieldCode": "补充公积金、社保、公积金",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 12,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4518,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "PaySite",
+        "FieldCN": "缴纳地点",
+        "FieldType": "文本",
+        "FieldCode": "111",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": false,
+        "Order": 13,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4519,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "PaymentDate",
+        "FieldCN": "社保/公积金起缴月份",
+        "FieldType": "文本",
+        "FieldCode": "2017/08",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": false,
+        "Order": 14,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4520,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "PayAmount",
+        "FieldCN": "社保缴纳基数",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 15,
+        "Required": true,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4521,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "CompDeduction",
+        "FieldCN": "公司扣款数",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 16,
+        "Required": true,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4522,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "PersonalDeduction",
+        "FieldCN": "个人扣款数",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 17,
+        "Required": true,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4523,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Other",
+        "FieldCN": "其他",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 18,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4524,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "AccumulationFundPay",
+        "FieldCN": "公积金缴纳基数",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 19,
+        "Required": true,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4525,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "FundCompDeduction",
+        "FieldCN": "公司扣款数",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 20,
+        "Required": true,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4526,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "FundPersonalDeduction",
+        "FieldCN": "个人扣款数",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 21,
+        "Required": true,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4527,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "FundOther",
+        "FieldCN": "其他",
+        "FieldType": "文本",
+        "FieldCode": "",
+        "MethodName": "{}",
+        "IsEdit": true,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Sharing center manager",
+        "IsAbstract": false,
+        "Order": 22,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      }
+    ],
+    "listAbstract": [
+      {
+        "Id": 4506,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Summary",
+        "FieldCN": "流程内容",
+        "FieldType": "文本",
+        "FieldCode": "测试",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 1,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4507,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Name",
+        "FieldCN": "姓名",
+        "FieldType": "文本",
+        "FieldCode": "杨妙",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 2,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4508,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Eid",
+        "FieldCN": "员工编号",
+        "FieldType": "文本",
+        "FieldCode": "0080036",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 3,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4509,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Company",
+        "FieldCN": "公司",
+        "FieldType": "文本",
+        "FieldCode": "集团信息工程中心",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 4,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4510,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "DeptName",
+        "FieldCN": "部门",
+        "FieldType": "文本",
+        "FieldCode": "HCM与协同IT部HCM交付科",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 5,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4511,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Position",
+        "FieldCN": "岗位",
+        "FieldType": "文本",
+        "FieldCode": "IT产品开发一级工程师",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 6,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4512,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "Grade",
+        "FieldCN": "岗级",
+        "FieldType": "文本",
+        "FieldCode": "5         ",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 7,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4515,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "maritalStatusName",
+        "FieldCN": "婚姻状况",
+        "FieldType": "文本",
+        "FieldCode": "未婚",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 10,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4516,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "AccountPropertiesName",
+        "FieldCN": "户口性质",
+        "FieldType": "文本",
+        "FieldCode": "非农",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 11,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      },
+      {
+        "Id": 4517,
+        "ProcessName": "InsurancePaymentRequest",
+        "FieldEN": "PayTypeName",
+        "FieldCN": "缴纳种类",
+        "FieldType": "文本",
+        "FieldCode": "补充公积金、社保、公积金",
+        "MethodName": "{}",
+        "IsEdit": false,
+        "IsShowForApp": true,
+        "WhichPageDisplay": "Start",
+        "IsAbstract": true,
+        "Order": 12,
+        "Required": false,
+        "ApproverDetail": "",
+        "ApplicantOrgDetail": "",
+        "PartTimeJob": ""
+      }
+    ],
+    "attchList": [
+      {
+        "Id": 37183,
+        "WorkflowIdentifier": "127dae5d-cc53-4354-be6b-af0470ec9db2",
+        "WorkFlowType": "InsurancePaymentRequest",
+        "FileGroupName": "流程类型",
+        "FileGroupValue": "63",
+        "FileName": "java",
+        "FileExtension": ".txt",
+        "FileUrl": "2017-08\\java20170818165829.txt",
+        "Active": true,
+        "CreateBy": "miao.yang",
+        "CreateTime": "2017-08-18 16:58:29",
+        "FileGroupNameEN": "流程类型"
+      }
+    ],
+    "empData": {
+      "Id": 21714,
+      "UserId": "Miao.Yang",
+      "Eid": "0080036",
+      "NameEN": "Yangmiao Yang",
+      "NameCN": "杨妙",
+      "SEX": "M",
+      "DeptCode": "000052",
+      "DeptNameEN": "HCM与协同IT部HCM交付科",
+      "DeptNameCN": "HCM与协同IT部HCM交付科",
+      "ReportTo": "0012930",
+      "Email": "Miao.Yang@geely.com",
+      "CompCode": "065",
+      "CompNameEN": "集团信息工程中心",
+      "CompNameCN": "集团信息工程中心",
+      "OrgCode": "065_000052",
+      "BU": "",
+      "Password": "",
+      "UpdateTime": "2017-08-15 03:00:13",
+      "CreateTime": "2016-11-10 17:08:53",
+      "OOF": false,
+      "Active": true,
+      "PositionNameCN": "IT产品开发一级工程师",
+      "PositionNameEN": " ",
+      "Grade": "5         ",
+      "TelePhoneNBR": " ",
+      "MobilePhoneNBR": "15157171800"
+    },
+    "hisData": {
+      "auditHis": [],
+      "auditNode": [
+        {
+          "NameCN": "开始",
+          "NameEN": "Start",
+          "Action": "发起",
+          "Approvers": "杨妙(Yangmiao Yang)",
+          "Status": 1,
+          "Comment": "提交",
+          "CreateTime": "8/18/2017 4:58:42 PM"
+        },
+        {
+          "NameCN": "本地HR领导",
+          "NameEN": "HRLeader",
+          "Action": "",
+          "Approvers": "娄月(Yue Lou)",
+          "Status": 2,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "公司领导",
+          "NameEN": "CompanyLeader",
+          "Action": "",
+          "Approvers": "娄月(Yue Lou)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "集团共享中心负责人、集团财务管理负责人",
+          "NameEN": "ShareCenterMinister、FinanceMinister",
+          "Action": "",
+          "Approvers": "冯济欣(Jixin Feng);温志云(Zhiyun Wen)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "共享中心经办人",
+          "NameEN": "Sharing center manager",
+          "Action": "",
+          "Approvers": "娄月(Yue Lou)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "本人确认",
+          "NameEN": "Person confirm",
+          "Action": "",
+          "Approvers": "杨妙(Yangmiao Yang)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "共享中心经办人备案",
+          "NameEN": "Share center manager record",
+          "Action": "",
+          "Approvers": "娄月(Yue Lou)",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        },
+        {
+          "NameCN": "结束",
+          "NameEN": "End",
+          "Action": "",
+          "Approvers": "",
+          "Status": 0,
+          "Comment": "",
+          "CreateTime": ""
+        }
+      ]
+    },
+    "IsKeyAuditNodeForApprove": {},
+    "IsKeyAuditNodeForDisplay": {}
+  }
+}
+                	Info.empData = responeddata.retData.empData;
+                    Info.listAbstract = responeddata.retData.listAbstract;
+                    Info.listValue = responeddata.retData.listValue;
+
+                 
+                    Timeline = {
+                        parentDom: document.getElementsByTagName('body')[0],
+                        //依次为原始（空代表默认色）,已完成，正在进行，出错或撤回节点对应的边框颜色，三角颜色，字体图标，
+                        status: [
+                            [],
+                            ["bg-star-flow", "border-star-flow", "mui-icon-checkmarkempty bg-success"],
+                            ["bg-doing-flow", "border-doing-flow", "mui-icon-location bg-warning"],
+                            ["bg-danger-flow", "border-danger-flow", "mui-icon-closeempty bg-danger"],
+                        ],
+                        templateText: function (data) {
+                            var statusIndex = data.Status,
+                                nameCN = data.NameCN,
+                                approvers = data.Approvers,
+                                createTime = data.CreateTime,
+                                action = data.Action,
+                                comment = data.Comment;
+
+                            return ('<div class="panel panel-default ' + this.status[statusIndex][0] + '">' +
+                                '<div class="">' +
+                                '<span class="arrow left ' + this.status[statusIndex][1] + '"></span>' +
+                                '<span class="timeline-icon">' +
+                                '<i class="fa-check time-icon mui-icon ' + this.status[statusIndex][2] + '"></i>' +
+                                '</span>' +
+                                '<div class="panel-body pl-body-approve">' +
+                                '<p class="m-n  ActiveNodeCN">' +
+                                '<label>' + nameCN + '</label>' +
+                                '<span class="float-right" title="">' + approvers + '</span>' +
+                                '</p>' +
+                                '<p class="m-n  ActiveNodeCN">' +
+                                '<label>' + createTime + '</label>' +
+                                '<span class="float-right resultColor" title="">' + action + '</span>' +
+                                '</p>' +
+                                '<p class="m-n  ActiveNodeCN">' +
+                                '<span class="other" title="">' + comment + '</span>' +
+                                '</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>')
+                        },
+                        init: function (dom, data) {
+                            //如果为传入dom，能默认body为dom
+                            this.parentDom = dom || this.parentDom;
+                            this.createTimeLine(this.parentDom, data);
+                        },
+                        createTimeLine: function (dom, data) {
+                            var htmlText = '';
+                            var node = document.createElement("LI");
+
+                            for (var i = 0; i < data.length; i++) {
+                                htmlText += this.templateText(data[i])
+                            }
+                            //console.log(htmlText);
+                            node.setAttribute('class', 'timeline-item')
+                            node.innerHTML = htmlText;
+                            dom.appendChild(node)
+                        }
+                    }
+
+                    Timeline.init(document.getElementById('timeline'), responeddata.retData.hisData.auditNode);
+
+                   
+                }, function () { });
+
+                $.ready(function () {
+
+                    $('.mui-scroll-wrapper').scroll({
+                        bounce: false,
+                        indicators: true, //是否显示滚动条
+                        deceleration: deceleration
+                    });
+
+                });
+            })(mui);
+			</script>
+	</body>
+
+</html>
